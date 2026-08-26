@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Funcionario {
 
     private Long id;
@@ -15,9 +13,24 @@ public class Funcionario {
     private String telefone;
     private String cargo;
     private String departamento;
-    private BigDecimal salario;
+    private Double salario;
     private String cidade;
     private String status;
+
+    // construtores
+    public Funcionario() {
+    }
+
+    public Funcionario(String nome, String email, String telefone, String cargo, String departamento, Double salario, String cidade, String status) {
+        this.nome = nome;
+        this.email = email;
+        this.telefone = telefone;
+        this.cargo = cargo;
+        this.departamento = departamento;
+        this.salario = salario;
+        this.cidade = cidade;
+        this.status = status;
+    }
 
 
 }
