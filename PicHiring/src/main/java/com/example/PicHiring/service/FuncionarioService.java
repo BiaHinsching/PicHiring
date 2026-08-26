@@ -9,12 +9,12 @@ import java.util.List;
 
 @Service
 public class FuncionarioService {
-    private final List<Funcionario> funcionarios = new ArrayList<>();
-    public Funcionario cadastrar(Funcionario funcionario) {
 
-        if (funcionario.getId() == null) {
-            throw new IllegalArgumentException("ID é obrigatório.");
-        }
+    private final List<Funcionario> funcionarios = new ArrayList<>();
+
+    private Long proximoId = 1L;
+
+    public Funcionario cadastrar(Funcionario funcionario) {
 
         if (funcionario.getNome() == null || funcionario.getNome().isBlank()) {
             throw new IllegalArgumentException("Nome é obrigatório.");
@@ -28,12 +28,11 @@ public class FuncionarioService {
             throw new IllegalArgumentException("Cargo é obrigatório.");
         }
 
-        boolean idExiste = funcionarios.stream().anyMatch(f -> f.getId().equals(funcionario.getId()));
-        if (idExiste) {
-            throw new IllegalArgumentException("ID já cadastrado.");
-        }
+        funcionario.setId(proximoId);
+        proximoId++;
 
         funcionarios.add(funcionario);
+
         return funcionario;
     }
 
