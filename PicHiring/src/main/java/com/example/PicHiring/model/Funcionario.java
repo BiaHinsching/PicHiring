@@ -1,7 +1,6 @@
 package com.example.PicHiring.model;
 
 import lombok.*;
-import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -31,6 +30,4 @@ public class Funcionario {
         this.cidade = cidade;
         this.status = status;
     }
-
-
 }
