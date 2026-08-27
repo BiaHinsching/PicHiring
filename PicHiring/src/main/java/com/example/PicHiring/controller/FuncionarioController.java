@@ -25,6 +25,13 @@ public class FuncionarioController {
         this.funcionarioService = funcionarioService;
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<String> tratarErroDeValidacao(IllegalArgumentException e) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
+
     // post
     @PostMapping
     public ResponseEntity<Funcionario> cadastrar(@RequestBody Funcionario funcionario) {
